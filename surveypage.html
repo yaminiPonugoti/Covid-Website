@@ -4,12 +4,72 @@
 			COVID-19 Journal Log
 		</title>
 		<p style = "text-align: center;">
-			This is a journal log where you can record your COVID-19 symptoms and temperature and receive recommendations from us.
+			This is a journal log where you can record your COVID-19 symptoms and temperature and receive recommendations from us!
 		</p>
 	</head>
 	<body>
-		<div class="center" style="text-align: center;">
-			<button type = "button" >
+        <form name="symptomForm" action="" method="post">
+            <p>
+                Do you have any of these symptoms? (Check all that apply).
+            </p>
+            <input type="checkbox" name="symptom" value="fever/chills">
+                Fever or chills
+            </input><br />
+           <input type="checkbox" name="symptom" value="cough">
+                Cough
+            </input><br /> 
+            <input type="checkbox" name="symptom" value="breath">
+                Shortness of breath or difficulty breathing
+            </input><br />
+            <input type="checkbox" name="symptom" value="fatigue">
+                Fatigue
+            </input><br />
+            <input type="checkbox" name="symptom" value="cough">
+                Muscle or body aches
+            </input><br />  
+            <input type="checkbox" name="symptom" value="headache">
+                Headache
+            </input><br />
+            <input type="checkbox" name="symptom" value="lossofsense">
+                New loss of taste or smell
+            </input><br />
+            <input type="checkbox" name="symptom" value="soreness">
+                Sore throat
+            </input><br />
+            <input type="checkbox" name="symptom" value="congestion">
+                Congestion or runny nose
+            </input><br />
+            <input type="checkbox" name="symptom" value="nausea">
+                Nausea or vomiting
+            </input><br />
+            <input type="checkbox" name="symptom" value="diarrhea">
+                Diarrhea
+            </input><br />      
+        </form>
+        <form name="warningForm" action="" method="post">
+            <p>
+                Do you have any of these life-threatening symptoms? (Check all that apply).
+            </p>
+            <input type="checkbox" name="symptom" value="breathing">
+                Trouble breathing
+            </input><br />
+           <input type="checkbox" name="symptom" value="chestpain">
+                Persistent pain or pressure in the chest
+            </input><br /> 
+            <input type="checkbox" name="symptom" value="confusion">
+                New confusion
+            </input><br />
+            <input type="checkbox" name="symptom" value="insomnia">
+                Inability to wake or stay awake
+            </input><br />
+            <input type="checkbox" name="symptom" value="bluelips">
+                Bluish lips or face
+            </input><br />
+            <label for="temp">What is your temperature?</label>
+            <input type="text" id="temp" name="temp"><br><br>  
+        </form>
+        <div class="center" style="text-align: center;">
+			<button type = "button" onclick="loadNextPage('lastPage')">
 				Submit
 			</button>
 		</div>
