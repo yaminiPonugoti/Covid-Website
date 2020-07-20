@@ -10,9 +10,12 @@ function loadNextPage(key){
 					</button>\
 				</div>\
 			';
+			break;
 		case "survey2":
 			window.open();
+			break;
 		case "adminLogin":
 			window.open();
+			break;
 	}
 }
