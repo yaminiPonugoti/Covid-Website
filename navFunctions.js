@@ -3,7 +3,13 @@
 function loadNextPage(key){
 	switch(key){
 		case "survey1":
-			window.open();
+			document.getElementById("body").innerHTML = '\
+				<div class="center" style="text-align: center;">\
+					<button type = "button" >\
+						Submit\
+					</button>\
+				</div>\
+			';
 		case "survey2":
 			window.open();
 		case "adminLogin":
