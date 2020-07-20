@@ -1,3 +1,49 @@
-body {
-	background-color:#FFFFFF
+.body {
+	background-color: FFFAFA;
 }
+.covidjournal {
+font-size: 30px;
+font-color: black;
+font-style: bold;
+text-align: center;
+text-decoration: underline;
+}
+
+.journaladmin {
+	font size: 15px;
+	font color: black;
+	text-align: justify;
+}
+.survey1button {
+	background-color: blue;
+	border: none;
+	color: white;
+	text-align: right;
+	font-size:10px;
+}
+	
+	.adminbutton {
+		border:none;
+		background-color: white;
+		color: blue;
+		text-align: left;
+		font-size:10px;
+		/**************/
+		.body {
+		background-color: FFFAFA;
+		}
+		.QuestionsComments{
+			font-size: 20px;
+			font-color: black;
+			font-style: bold;
+			text allign: center;
+			text-decoration: underline;
+			
+			.symptoms {
+				font-size: 12px;
+				font-color: black;
+				text-allign: center;
+				
+			
+			
+		
