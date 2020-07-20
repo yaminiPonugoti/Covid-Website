@@ -3,16 +3,16 @@
 		<script type="text/javascript" src="database.js"></script>
 		<script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
 		<link rel="stylesheet" type="text/css" href="stylesheet.css">
-		<title>
+		<title class="covidjournal">
 			COVID-19 Journal Log
 		</title>
-		<p style = "text-align: center;">
+		<p class="journaladmin">
 			This is a journal log where you can record your COVID-19 symptoms and temperature and receive recommendations from us!
 		</p>
 	</head>
 	<body>
         <div style="text-align: center;">
-			<p>
+			<p class="QuestionsComments">
                 Please answer the following questions:
 			</p>
 			<label for="fName">First name: </label>
@@ -22,7 +22,7 @@
 			<label for="bDay">Birthdate:  </label>
 			<input type="text" id="bDay" placeholder="mm/dd/yyyy"><br>
 		</div>
-        <form name="symptomForm" id="symptomForm" action="" method="post">
+        <form name="symptomForm" id="symptomForm" action="" method="post" class="symptoms">
             <p>
                 Do you have any of these symptoms? (Check all that apply).
             </p>
