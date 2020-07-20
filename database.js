@@ -87,5 +87,5 @@ function addSurveyEntry(){
 		}
 	}
 	
-	//window.open("lastpage.html", "_self");
+	window.open("post-survey.html", "_self");
 }
