@@ -5,8 +5,8 @@ function loadNextPage(key){
 		case "survey1":
 			document.getElementById("body").innerHTML = '\
 				<div class="center" style="text-align: center;">\
-					<button type = "button" >\
-						Submit\
+					<button type = "button" onclick="loadNextPage(\'survey2\')">\
+						Next\
 					</button>\
 				</div>\
 			';

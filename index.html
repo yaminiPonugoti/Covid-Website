@@ -12,6 +12,17 @@
 		<script type="text/javascript" src="navFunctions.js"></script>
 	</head>
 	<body id="body">
+		<div style="text-align: center;">
+			<p>
+				Enter your name and birthdate to begin, then click "Next." If you are an admin, click "Log In" instead to access your account.
+			</p>
+			<label for="fName">First name: </label>
+			<input type="text" id="fName"><br>
+			<label for="lName">Last name:  </label>
+			<input type="text" id="lName"><br>
+			<label for="bDay">Birthdate:  </label>
+			<input type="text" id="bDay" placeholder="mm/dd/yyyy"><br>
+		</div>
 		<div class="center" style="text-align: center;">
 			<button type = "button" onclick="loadNextPage('adminLogin')">
 				Log In
