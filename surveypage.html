@@ -8,6 +8,17 @@
 		</p>
 	</head>
 	<body>
+        <div style="text-align: center;">
+			<p>
+                Please answer the following questions:
+			</p>
+			<label for="fName">First name: </label>
+			<input type="text" id="fName"><br>
+			<label for="lName">Last name:  </label>
+			<input type="text" id="lName"><br>
+			<label for="bDay">Birthdate:  </label>
+			<input type="text" id="bDay" placeholder="mm/dd/yyyy"><br>
+		</div>
         <form name="symptomForm" action="" method="post">
             <p>
                 Do you have any of these symptoms? (Check all that apply).
@@ -65,9 +76,23 @@
             <input type="checkbox" name="symptom" value="bluelips">
                 Bluish lips or face
             </input><br />
+            <br></br>
             <label for="temp">What is your temperature?</label><br></br>
             <input type="text" id="temp" name="temp"><br><br>  
         </form>
+        <div style="text-align: center;">
+			<p>
+                If you are taking any medications, please list their name and dosage/quantity below:
+			</p>
+			<textarea id="medicine" name="medicine" rows="4" cols="50"></textarea>
+        </div>
+        <br/>
+        <div style="text-align: center;">
+			<p>
+                Record any additional details here:
+			</p>
+			<textarea id="extradetails" name="extra" rows="4" cols="50"></textarea>
+		</div>
         <div class="center" style="text-align: center;">
 			<button type = "button" onclick="loadNextPage('lastPage')">
 				Submit
