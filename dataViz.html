@@ -16,7 +16,8 @@
 		integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
 		crossorigin=""></script>
 		<style>
-			 #mapid { height: 180px; }
+			 #mapid { height: 500px;
+			 		  width: 800px; }
 		</style>
 		<script type="text/javascript" src="navFunctions.js"></script>
 	</head>
@@ -32,21 +33,14 @@
 			<label for="bDay">Birthdate:  </label>
 			<input type="text" id="bDay" placeholder="mm/dd/yyyy"><br>
 		</div>
-		<div id="mapid"></div>
+		<div id="mapid" ></div>
 		<script>
-			var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+			var mymap = L.map('mapid').setView([39.8097343, -98.5556199], 4);
 			const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 			const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 			const tiles = L.tileLayer(tileUrl, {attribution});
 			tiles.addTo(mymap);
 		</script>
-		<div class="center" style="text-align: center;">
-			<button type = "button" onclick="loadNextPage('adminLogin')">
-				Log In
-			</button>
-			<button type="submit" onclick="loadNextPage('survey1')">
-				Next
-			</button>
-		</div>
+
 	</body>
 </html>
