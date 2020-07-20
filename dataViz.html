@@ -9,6 +9,15 @@
 		<p style = "text-align: center;">
 			This journal can help you log your symptoms of COVID-19 while in recovery during quarantine. If you are an admin, please log in. If not, click next.
 		</p>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+		crossorigin=""/>
+		<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+		integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+		crossorigin=""></script>
+		<style>
+			 #mapid { height: 180px; }
+		</style>
 		<script type="text/javascript" src="navFunctions.js"></script>
 	</head>
 	<body id="body">
@@ -23,6 +32,14 @@
 			<label for="bDay">Birthdate:  </label>
 			<input type="text" id="bDay" placeholder="mm/dd/yyyy"><br>
 		</div>
+		<div id="mapid"></div>
+		<script>
+			var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+			const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+			const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+			const tiles = L.tileLayer(tileUrl, {attribution});
+			tiles.addTo(mymap);
+		</script>
 		<div class="center" style="text-align: center;">
 			<button type = "button" onclick="loadNextPage('adminLogin')">
 				Log In
