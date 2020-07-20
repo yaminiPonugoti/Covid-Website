@@ -1,6 +1,6 @@
 //Website navigation scripts
 
-function loadNextPage(key){
+/*function loadNextPage(key){
 	switch(key){
 		case "survey1":
 			window.open("surveypage.html", "_self");
@@ -12,4 +12,4 @@ function loadNextPage(key){
 			window.open();
 			break;
 	}
-}
+}*/

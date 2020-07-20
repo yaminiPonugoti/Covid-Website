@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<script type="text/javascript" src="database.js"></script>
 		<title>
 			COVID-19 Journal Log
 		</title>
@@ -19,7 +20,7 @@
 			<label for="bDay">Birthdate:  </label>
 			<input type="text" id="bDay" placeholder="mm/dd/yyyy"><br>
 		</div>
-        <form name="symptomForm" action="" method="post">
+        <form name="symptomForm" id="symptomForm" action="" method="post">
             <p>
                 Do you have any of these symptoms? (Check all that apply).
             </p>
@@ -57,7 +58,7 @@
                 Diarrhea
             </input><br />      
         </form>
-        <form name="warningForm" action="" method="post">
+        <form name="warningForm" id="warningForm" action="" method="post">
             <p>
                 Do you have any of these life-threatening symptoms? (Check all that apply).
             </p>
@@ -94,7 +95,7 @@
 			<textarea id="extradetails" name="extra" rows="4" cols="50"></textarea>
 		</div>
         <div class="center" style="text-align: center;">
-			<button type = "button" onclick="loadNextPage('lastPage')">
+			<button type = "button" onclick="addSurveyEntry()">
 				Submit
 			</button>
 		</div>
