@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<script type="text/javascript" src="database.js"></script>
+		<script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
 		<title>
 			COVID-19 Journal Log
 		</title>
@@ -24,37 +25,37 @@
             <p>
                 Do you have any of these symptoms? (Check all that apply).
             </p>
-            <input type="checkbox" name="symptom" value="fever/chills">
+            <input type="checkbox" name="symptom" value="fever/chills" id="fever/chills">
                 Fever or chills
             </input><br />
-           <input type="checkbox" name="symptom" value="cough">
+           <input type="checkbox" name="symptom" value="cough" id="cough">
                 Cough
             </input><br /> 
-            <input type="checkbox" name="symptom" value="breath">
+            <input type="checkbox" name="symptom" value="breath" id="breath">
                 Shortness of breath or difficulty breathing
             </input><br />
-            <input type="checkbox" name="symptom" value="fatigue">
+            <input type="checkbox" name="symptom" value="fatigue" id="fatigue">
                 Fatigue
             </input><br />
-            <input type="checkbox" name="symptom" value="cough">
+            <input type="checkbox" name="symptom" value="aches" id="aches">
                 Muscle or body aches
             </input><br />  
-            <input type="checkbox" name="symptom" value="headache">
+            <input type="checkbox" name="symptom" value="headache" id="headache">
                 Headache
             </input><br />
-            <input type="checkbox" name="symptom" value="lossofsense">
+            <input type="checkbox" name="symptom" value="lossofsense" id="sense">
                 New loss of taste or smell
             </input><br />
-            <input type="checkbox" name="symptom" value="soreness">
+            <input type="checkbox" name="symptom" value="soreness" id="throat">
                 Sore throat
             </input><br />
-            <input type="checkbox" name="symptom" value="congestion">
+            <input type="checkbox" name="symptom" value="congestion" id="nose">
                 Congestion or runny nose
             </input><br />
-            <input type="checkbox" name="symptom" value="nausea">
+            <input type="checkbox" name="symptom" value="nausea" id="nausea">
                 Nausea or vomiting
             </input><br />
-            <input type="checkbox" name="symptom" value="diarrhea">
+            <input type="checkbox" name="symptom" value="diarrhea" id="diarrhea">
                 Diarrhea
             </input><br />      
         </form>
@@ -62,19 +63,19 @@
             <p>
                 Do you have any of these life-threatening symptoms? (Check all that apply).
             </p>
-            <input type="checkbox" name="symptom" value="breathing">
+            <input type="checkbox" name="symptom" value="breathing" id="breathing">
                 Trouble breathing
             </input><br />
-           <input type="checkbox" name="symptom" value="chestpain">
+           <input type="checkbox" name="symptom" value="chestpain" id="chestpain">
                 Persistent pain or pressure in the chest
             </input><br /> 
-            <input type="checkbox" name="symptom" value="confusion">
+            <input type="checkbox" name="symptom" value="confusion" id="confusion">
                 New confusion
             </input><br />
-            <input type="checkbox" name="symptom" value="insomnia">
+            <input type="checkbox" name="symptom" value="insomnia" id="insomnia">
                 Inability to wake or stay awake
             </input><br />
-            <input type="checkbox" name="symptom" value="bluelips">
+            <input type="checkbox" name="symptom" value="bluelips" id="bluelips">
                 Bluish lips or face
             </input><br />
             <br></br>
