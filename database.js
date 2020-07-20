@@ -83,9 +83,30 @@ function addSurveyEntry(){
 	for(i=0; i<titles.length; i++){
 		newImport.set(titles[i], entry[i]);
 		if(i == (titles.length - 1)){
-			newImport.save();
+			newImport.save().then(
+				(result) => {
+					//window.open("post-survey.html", "_self");
+				}
+			);
 		}
 	}
-	
-	window.open("post-survey.html", "_self");
+}
+
+function queryDatabase(first, last, birthday, field){
+	resultsArr = [];
+	Parse.initialize(applicationID, javascriptKey);
+	Parse.serverURL = serverID;
+	var query = new Parse.Query(Parse.Object.extend("Survey"));
+	query.equalTo("firstname", first);
+	query.equalTo("lastname", last);
+	query.equalTo("birthdate", birthday);
+	query.find().then(results => {
+		for(i=0; i<results.length; i++){
+			alert(results[i].get("temperature"));
+			resultsArr.push(results[i].get(field));
+			if(i == results.length - 1){
+				return resultsArr;
+			}
+		}
+	});
 }
