@@ -8,7 +8,7 @@ function addSurveyEntry(){
 	//Access elements and place in data structure
 	var entry = new Map();
 	entry.set("fever/chills", document.getElementById("symptomForm").elements.namedItem("fever/chills").value);
-	console.log(entry.get("fever/chills"));
+	alert(entry.get("fever/chills"));
 	
 	//Insert from data structure into database
 	Parse.initialize(applicationID, javascriptKey);
