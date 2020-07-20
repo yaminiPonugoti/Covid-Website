@@ -3,15 +3,9 @@
 function loadNextPage(key){
 	switch(key){
 		case "survey1":
-			document.getElementById("body").innerHTML = '\
-				<div class="center" style="text-align: center;">\
-					<button type = "button" onclick="loadNextPage(\'survey2\')">\
-						Next\
-					</button>\
-				</div>\
-			';
+			window.open("surveypage.html", "_self");
 			break;
-		case "survey2":
+		case "patientHome":
 			window.open();
 			break;
 		case "adminLogin":
