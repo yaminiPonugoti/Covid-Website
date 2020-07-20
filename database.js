@@ -105,7 +105,7 @@ function queryDatabase(first, last, birthday, field){
 			alert(results[i].get("temperature"));
 			resultsArr.push(results[i].get(field));
 			if(i == results.length - 1){
-				return resultsArr;
+				localStorage.setItem("query", resultsArr);
 			}
 		}
 	});
