@@ -6,7 +6,7 @@
 		<title class="covidjournal">
 			COVID-19 Journal Log
 		</title>
-		<p class="journaladmin">
+		<p class="journaladmin" style="text-align: center;">
 			This is a journal log where you can record your COVID-19 symptoms and temperature and receive recommendations from us!
 		</p>
 	</head>
@@ -21,7 +21,14 @@
 			<input type="text" id="lName"><br>
 			<label for="bDay">Birthdate:  </label>
 			<input type="text" id="bDay" placeholder="mm/dd/yyyy"><br>
-		</div>
+        </div>
+        <div style="text-align: center;">
+			<p>
+                Please enter your location (city & state):
+			</p>
+			<input type="text" id="location"><br>
+        </div>
+        <br/>
         <form name="symptomForm" id="symptomForm" action="" method="post" class="symptoms">
             <p>
                 Do you have any of these symptoms? (Check all that apply).
