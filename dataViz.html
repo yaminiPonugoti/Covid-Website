@@ -610,6 +610,40 @@
 		  .range([ height, 0]);
 		svg.append("g")
 		  .call(d3.axisLeft(y));
+		  
+		  // create a tooltip
+		var Tooltip = d3.select("#container")
+			.append("div")
+			.style("opacity", 0)
+			.attr("class", "tooltip")
+			.style("background-color", "white")
+			.style("border", "solid")
+			.style("border-width", "2px")
+			.style("border-radius", "5px")
+			.style("padding", "5px")
+
+		// Three function that change the tooltip when user hover / move / leave a cell
+		var mouseover = function(d) {
+		Tooltip
+			.style("opacity", 1)
+		d3.select(this)
+			.style("stroke", "black")
+			.style("opacity", 1)
+		}
+		var mousemove = function(d) {
+		Tooltip
+			.html("Temperature:" + d.value)
+			.style("left", (d3.mouse(this)[0]+70) + "px")
+			.style("top", (d3.mouse(this)[1]) + "px")
+			.style("font-size", "14px");
+		}
+		var mouseleave = function(d) {
+		Tooltip
+			.style("opacity", 0)
+		d3.select(this)
+			.style("stroke", "none")
+			.style("opacity", 0.8)
+		}
 
 		// Bars
 		svg.selectAll("mybar")
@@ -621,6 +655,9 @@
 			.attr("width", x.bandwidth())
 			.attr("height", function(d) { return height - y(d.value); })
 			.attr("fill", "#69b3a2")
+		.on("mouseover", mouseover)
+    	.on("mousemove", mousemove)
+    	.on("mouseleave", mouseleave)
 		
 		
 		
@@ -824,7 +861,7 @@
 		
 		var data = [];
 		for(i=0; i<symptoms.length; i++){
-			data[i] = ({date:dates[i], value:Number(symptoms[i])});
+			data[i] = ({date:dates[i], value:Number(symptoms[i]), symptoms:symptomsList[i]});
 		}
 		
 		
@@ -846,6 +883,40 @@
 		  .range([ height, 0]);
 		svg.append("g")
 		  .call(d3.axisLeft(y));
+		  
+		// create a tooltip
+		var Tooltip = d3.select("#container2")
+			.append("div")
+			.style("opacity", 0)
+			.attr("class", "tooltip")
+			.style("background-color", "white")
+			.style("border", "solid")
+			.style("border-width", "2px")
+			.style("border-radius", "5px")
+			.style("padding", "5px")
+
+		// Three function that change the tooltip when user hover / move / leave a cell
+		var mouseover = function(d) {
+		Tooltip
+			.style("opacity", 1)
+		d3.select(this)
+			.style("stroke", "black")
+			.style("opacity", 1)
+		}
+		var mousemove = function(d) {
+		Tooltip
+			.html("Symptoms are:" + d.symptoms)
+			.style("left", (d3.mouse(this)[0]+70) + "px")
+			.style("top", (d3.mouse(this)[1]) + "px")
+			.style("font-size", "14px");
+		}
+		var mouseleave = function(d) {
+		Tooltip
+			.style("opacity", 0)
+		d3.select(this)
+			.style("stroke", "none")
+			.style("opacity", 0.8)
+		}
 
 		// Bars
 		svg.selectAll("mybar")
@@ -857,6 +928,9 @@
 			.attr("width", x.bandwidth())
 			.attr("height", function(d) { return height - y(d.value); })
 			.attr("fill", "#BD371A")
+		.on("mouseover", mouseover)
+    	.on("mousemove", mousemove)
+    	.on("mouseleave", mouseleave)
 	}
 	</script>
 	</body>

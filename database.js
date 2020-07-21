@@ -95,7 +95,7 @@ function addSurveyEntry(){
 	for(c=3; c<entry.length-7; c++){
 		if(entry[c]){
 			entry[entry.length-4] += 1;
-			entry[entry.length-3] += titles[c] + ","
+			entry[entry.length-3] += titles[c] + "/"
 		}
 	}
 	entry[entry.length-3] = entry[entry.length-3].substring(0,entry[entry.length-3].length-1);
