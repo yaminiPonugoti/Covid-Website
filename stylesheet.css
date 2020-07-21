@@ -24,10 +24,18 @@
 	
 .adminbutton {
 	border:none;
-	background-color: white;
-	color: blue;
+	background-color: blue;
+	color: white;
 	text-align: left;
 	font-size:10px;
+	
+	.resultsbutton {
+		border:none;
+		background-color: blue;
+		color: white;
+		text-allign: center;
+		font-size: 10px;
+		
 }
 
 .body {
