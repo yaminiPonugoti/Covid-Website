@@ -1,6 +1,8 @@
+/* First Page Code */
 .body {
 	background-color: #FFFAFA;
 }
+/* Title of First Page */
 .covidjournal {
 	font-size: 30px;
 	color: black;
@@ -8,12 +10,13 @@
 	text-align: center;
 	text-decoration: underline;
 }
-
+/* Secondary Text */
 .journaladmin {
 	font size: 15px;
 	font color: black;
 	text-align: justify;
 }
+/* Take Survey Button */
 .survey1button {
 	background-color: blue;
 	border: none;
@@ -21,14 +24,15 @@
 	text-align: right;
 	font-size:10px;
 }
-	
+/* Log In Button */	
 .adminbutton {
 	border:none;
 	background-color: blue;
 	color: white;
 	text-align: left;
 	font-size:10px;
-	
+}
+/* Results Button */
 	.resultsbutton {
 		border:none;
 		background-color: blue;
@@ -37,10 +41,11 @@
 		font-size: 10px;
 		
 }
-
+/* Survey Page CODE */
 .body {
 	background-color: #FFFAFA;
 }
+/* All Questions And Comments Use This Class */	
 .QuestionsComments{
 	font-size: 20px;
 	color: black;
@@ -48,13 +53,29 @@
 	text-align: center;
 	text-decoration: underline;
 }
-
+/* Labeling The Symptoms Use This Class */
 .symptoms {
 	font-size: 12px;
 	color: black;
 	text-align: center;
 }
-				
+/* Entering In Location Use This Class */	
+.location {
+	font-size: 20px;
+	color: black;
+	font-style: bold;
+	text-align: center;
+	text-decoration: underline;
+	}
+	/* Question About Medication Use This Class */
+	.medication {
+		font-size: 20px;
+		color: black;
+		font-style: bold;
+		text-align: center;
+		text-decoration: underline;
+
+		
 			
 			
 		
