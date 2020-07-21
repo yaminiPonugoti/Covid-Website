@@ -35,12 +35,11 @@
 }
 /* Results Button */
 	.resultsbutton {
-		border:none;
 		background-color: green;
 		color: white;
 		text-align: center;
 		font-size: 16px;
-		padding: 10x 20px;
+		padding: 10px 20px;
 }
 /* Survey Page CODE */
 .body {
