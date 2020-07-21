@@ -51,7 +51,12 @@ function addSurveyEntry(){
 		
 		Number(document.getElementById("temp").value),
 		document.getElementById("medicine").value,
-		document.getElementById("extradetails").value
+		document.getElementById("extradetails").value,
+		
+		0,
+		"",
+		0,
+		0
 	];
 	
 	var titles = [
@@ -79,8 +84,24 @@ function addSurveyEntry(){
 		
 		"temperature",
 		"medicines",
-		"othercomments"
+		"othercomments",
+		
+		"symptomcount",
+		"symptomslist",
+		"latitude",
+		"longitude"
 	];
+	
+	for(c=3; c<entry.length-7; c++){
+		if(entry[c]){
+			entry[entry.length-4] += 1;
+			entry[entry.length-3] += titles[c] + ","
+		}
+	}
+	entry[entry.length-3] = entry[entry.length-3].substring(0,entry[entry.length-3].length-1);
+	
+	alert(entry[entry.length-3]);
+	alert(entry[entry.length-4]);
 	
 	//Insert from data structures into database
 	Parse.initialize(applicationID, javascriptKey);
@@ -94,14 +115,15 @@ function addSurveyEntry(){
 				(result) => {
 					queryDatabase(fName, lName, bDay, "temperature");
 					queryDatabase(fName, lName, bDay, "createdAt");
-					queryDatabase(fName, lName, bDay, "objectId");
+					queryDatabase(fName, lName, bDay, "symptomcount");
+					queryDatabase(fName, lName, bDay, "symptomslist", true);
 				}
 			);
 		}
 	}
 }
 
-function queryDatabase(first, last, birthday, field){
+function queryDatabase(first, last, birthday, field, extras = false){
 	var resultsArr = [];
 	Parse.initialize(applicationID, javascriptKey);
 	Parse.serverURL = serverID;
@@ -115,12 +137,18 @@ function queryDatabase(first, last, birthday, field){
 				resultsArr[i] = String(results[i].get(field))//.split(" ").slice(1,4).join("-");
 			}
 			else if(field != "objectId"){
-				resultsArr.push(String(results[i].get(field)));
+				resultsArr.push(results[i].get(field));
 			}
 			if(i == results.length - 1){
 				localStorage.setItem(field, resultsArr);
-				if(field == "objectId"){
-					window.open("post-survey.html", "_self");
+				if(extras){
+					var query2 = new Parse.Query(Parse.Object.extend("Survey"));
+					query2.equalTo("firstname", first);
+					query2.equalTo("lastname", last);
+					query2.equalTo("birthdate", birthday);
+					query2.find().then(results => {
+						window.open("post-survey.html", "_self");
+					});
 				}
 			}
 		}

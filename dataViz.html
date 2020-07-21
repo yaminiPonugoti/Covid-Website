@@ -22,10 +22,11 @@
 		</style>
 		<script type="text/javascript" src="navFunctions.js"></script>
 	</head>
-	<body id="body" onload="createTempGraph();">
-		<div id="mapid" ></div>
+	<body id="body" onload="createSymptomGraph(); createTempGraph();">
+		<!--<div id="mapid" ></div>-->
 		<div id="container" class="svg-container"></div>
-		<script>
+		<div id="container2" class="svg-container"></div>
+		<!--<script>
 			var mymap = L.map('mapid').setView([39.8097343, -98.5556199], 4);
 			const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 			const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -557,7 +558,7 @@
 				.bindPopup(dlist[i][0])
 				.addTo(mymap);
 		}
-		</script>
+		</script>-->
 
 <script>
 	function createTempGraph(){
@@ -794,6 +795,68 @@
 			});
 	
 		});*/
+	}
+	
+	function createSymptomGraph(){
+		const width = 960;
+		const height = 500;
+		const margin = 5;
+		const padding = 5;
+		const adj = 30;
+		// we are appending SVG first
+		const svg = d3.select("div#container2").append("svg")
+			.attr("preserveAspectRatio", "xMinYMin meet")
+			.attr("viewBox", "-"
+				  + adj + " -"
+				  + adj + " "
+				  + (width + adj *3) + " "
+				  + (height + adj*3))
+			.style("padding", padding)
+			.style("margin", margin)
+			.classed("svg-content", true);
+		
+		var fName = localStorage.getItem("fName");
+		var lName = localStorage.getItem("lName");
+		var birthdate = localStorage.getItem("birthdate")
+		var symptomsList = localStorage.getItem("symptomslist").split(",");
+		var symptoms = localStorage.getItem("symptomcount").split(",");
+		var dates = localStorage.getItem("createdAt").split(",");
+		
+		var data = [];
+		for(i=0; i<symptoms.length; i++){
+			data[i] = ({date:dates[i], value:Number(symptoms[i])});
+		}
+		
+		
+		// X axis
+		var x = d3.scaleBand()
+		  .range([ 0, width ])
+		  .domain(data.map(function(d) { return d.date; }))
+		  .padding(0.2);
+		svg.append("g")
+		  .attr("transform", "translate(0," + height + ")")
+		  .call(d3.axisBottom(x))
+		  .selectAll("text")
+			.attr("transform", "translate(-10,0)rotate(-45)")
+			.style("text-anchor", "end");
+
+		// Add Y axis
+		var y = d3.scaleLinear()
+		  .domain([0, 15])
+		  .range([ height, 0]);
+		svg.append("g")
+		  .call(d3.axisLeft(y));
+
+		// Bars
+		svg.selectAll("mybar")
+		  .data(data)
+		  .enter()
+		  .append("rect")
+			.attr("x", function(d) { return x(d.date); })
+			.attr("y", function(d) { return y(d.value); })
+			.attr("width", x.bandwidth())
+			.attr("height", function(d) { return height - y(d.value); })
+			.attr("fill", "#BD371A")
 	}
 	</script>
 	</body>
