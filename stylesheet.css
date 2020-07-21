@@ -53,8 +53,8 @@
 }
 /* Labeling The Symptoms Use This Class */
 .symptoms {
-	font-size: 12px;
-	color: black;
+	font-size: 10px;
+	color: red;
 	text-align: center;
 }
 /* Entering In Location Use This Class */	
