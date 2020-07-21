@@ -18,7 +18,7 @@
 }
 /* Take Survey Button */
 .survey1button {
-	background-color: blue;
+	background-color: red;
 	color: white;
 	text-align: center;
 	font-size:16px;
@@ -36,10 +36,11 @@
 /* Results Button */
 	.resultsbutton {
 		border:none;
-		background-color: blue;
+		background-color: green;
 		color: white;
 		text-align: center;
-		font-size: 10px;	
+		font-size: 16px;
+		padding: 10x 20px;
 }
 /* Survey Page CODE */
 .body {
