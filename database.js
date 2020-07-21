@@ -17,16 +17,19 @@ function addSurveyEntry(){
 	if(!checkValidity()){
 		return;
 	}
+	var fName = document.getElementById("fName").value;
+	var lName = document.getElementById("lName").value;
+	var bDay = document.getElementById("bDay").value;
 	
-	localStorage.setItem("fName", document.getElementById("fName").value);
-	localStorage.setItem("lName", document.getElementById("lName").value);
-	localStorage.setItem("birthdate", document.getElementById("bDay").value);
+	localStorage.setItem("fName", fName);
+	localStorage.setItem("lName", lName);
+	localStorage.setItem("birthdate", bDay);
 
 	//Access elements and place in data structures
 	var entry = [
-		document.getElementById("fName").value,
-		document.getElementById("lName").value,
-		document.getElementById("bDay").value,
+		fName,
+		lName,
+		bDay,
 		
 		document.getElementById("fever/chills").checked,
 		document.getElementById("cough").checked,
@@ -89,7 +92,9 @@ function addSurveyEntry(){
 		if(i == (titles.length - 1)){
 			newImport.save().then(
 				(result) => {
-					window.open("post-survey.html", "_self");
+					queryDatabase(fName, lName, bDay, "temperature");
+					queryDatabase(fName, lName, bDay, "createdAt");
+					queryDatabase(fName, lName, bDay, "objectId");
 				}
 			);
 		}
@@ -97,7 +102,7 @@ function addSurveyEntry(){
 }
 
 function queryDatabase(first, last, birthday, field){
-	resultsArr = [];
+	var resultsArr = [];
 	Parse.initialize(applicationID, javascriptKey);
 	Parse.serverURL = serverID;
 	var query = new Parse.Query(Parse.Object.extend("Survey"));
@@ -106,10 +111,17 @@ function queryDatabase(first, last, birthday, field){
 	query.equalTo("birthdate", birthday);
 	query.find().then(results => {
 		for(i=0; i<results.length; i++){
-			alert(results[i].get("temperature"));
-			resultsArr.push(results[i].get(field));
+			if(field == "createdAt"){
+				resultsArr[i] = String(results[i].get(field))//.split(" ").slice(1,4).join("-");
+			}
+			else if(field != "objectId"){
+				resultsArr.push(String(results[i].get(field)));
+			}
 			if(i == results.length - 1){
-				localStorage.setItem("query", resultsArr);
+				localStorage.setItem(field, resultsArr);
+				if(field == "objectId"){
+					window.open("post-survey.html", "_self");
+				}
 			}
 		}
 	});
