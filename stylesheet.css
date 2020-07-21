@@ -94,7 +94,7 @@ padding: 10px 20px;
 text-allign: center;
 font-size: 16px;
 }
-/* Post Survey */
+/* Post Survey Page */
 .LogRecorded {
 font-size: 20px;
 color: black;
@@ -114,9 +114,30 @@ background-color: blue;
 color: white;
 padding: 10px 20px;
 text-align: center;
-font-size 16px;
+font-size: 16px;
+}
+/* Admin Data Visualization Page */
+.body {
+background-color: FFFAFA;
+/* Admin Below our Patients Results */
+	.belowispatientdata
+	font-size: 20px;
+	color: black;
+	font-style: bold;
+	text-allign: center;
+	text-decoration: underline;
+}
+/* Log Out Button */
+.logoutbutton {
+background-color: blue;
+color: white;
+	padding: 10px 20px;
+	text-allign: center;
+	font-size: 16px;
 }
 	
+
+
 	
 
 
