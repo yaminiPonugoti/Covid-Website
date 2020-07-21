@@ -20,7 +20,7 @@
 .survey1button {
 	background-color: blue;
 	color: white;
-	text-align: right;
+	text-align: center;
 	font-size:16px;
 	padding: 10px 20px;
 }
@@ -76,6 +76,9 @@
 		text-decoration: underline;
 }
 /* Admin Log In Page */
+.body {
+background-color: FFFAFA;
+}
 .submitbutton {
 background-color: green;
 color: white;
@@ -90,6 +93,27 @@ color: white;
 padding: 10px 20px;
 text-allign: center;
 font-size: 16px;
+}
+/* Post Survey */
+.LogRecorded {
+font-size: 20px;
+color: black;
+font-style: bold;
+text-align: center;
+text-decoration: underline;
+}
+.SurveyText {
+font-size: 15px;
+color: black;
+text-align: justify;
+}
+.VisualizationButton {
+background-color: blue;
+color: white;
+padding: 10px 20px;
+text-align: center;
+font-size 16px;
+	
 	
 
 
