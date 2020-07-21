@@ -17,6 +17,10 @@ function addSurveyEntry(){
 	if(!checkValidity()){
 		return;
 	}
+	
+	localStorage.setItem("fName", document.getElementById("fName").value);
+	localStorage.setItem("lName", document.getElementById("lName").value);
+	localStorage.setItem("birthdate", document.getElementById("bDay").value);
 
 	//Access elements and place in data structures
 	var entry = [
@@ -85,7 +89,7 @@ function addSurveyEntry(){
 		if(i == (titles.length - 1)){
 			newImport.save().then(
 				(result) => {
-					//window.open("post-survey.html", "_self");
+					window.open("post-survey.html", "_self");
 				}
 			);
 		}
