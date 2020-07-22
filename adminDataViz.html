@@ -13,14 +13,42 @@
 			}
         </style>
         <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+		crossorigin=""/>
 	</head>
 	<body>
+		<div id="mapid" style="height:500px; width:800px;"></div>
+		<svg width="600" height="500"></svg>
 		<div class="center" style="text-align: center;">
 			<button type = "button" class="logoutbutton" onclick="window.open('index.html', '_self')">
 				Log Out
 			</button>
 		</div>
-		<svg width="600" height="500"></svg>
+		
+		<script>
+			var mymap = L.map('mapid').setView([39.8097343, -98.5556199], 4);
+			const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+			const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+			const tiles = L.tileLayer(tileUrl, {attribution});
+			tiles.addTo(mymap);
+			
+			dlist = localStorage.getItem("locations");
+			
+			for (var i = 0; i < dlist.length; i++) {
+			circle = new L.circle([dlist[i][1], dlist[i][2]], 500, {
+				fillOpacity: .8,
+				color: '#ffa500',
+				fillColor: '#ffa500',
+				weight: 3,
+				radius: 40,
+				stroke: true
+			})
+				.bindPopup(dlist[i][0])
+				.addTo(mymap);
+		}
+		</script>-->
+		
 <script>
 
     var svg = d3.select("svg"),
