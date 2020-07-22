@@ -22,7 +22,7 @@
 	</head>
 	<body style="background-color: Linen" onload="createGraph()">
 		<div id="mapid" style="height:300px; width:400px;"></div>
-		<div id="container" class="svg-container" style="height:300px; width:400px;"></div>
+		<div id="container" class="svg-container" style="height:400px; width:500px;"></div>
 		<div class="center" style="text-align: center;">
 			<button type = "button" class="logoutbutton" onclick="window.open('index.html', '_self')">
 				Log Out
@@ -30,7 +30,7 @@
 		</div>
 		
 		<script>
-			var mymap = L.map('mapid').setView([39.8097343, -98.5556199], 4);
+			var mymap = L.map('mapid').setView([39.8097343, -98.5556199], 3);
 			const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 			const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 			const tiles = L.tileLayer(tileUrl, {attribution});
