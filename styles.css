@@ -1,5 +1,12 @@
 /* AXES */
 /* ticks */
+.BelowIsPatientData{
+	font-size: 20px;
+	color: black;
+	font-style: bold;
+	text-align: center;
+	text-decoration: underline;
+}
 .axis line{
     stroke: #706f6f;
     stroke-width: 0.5;
