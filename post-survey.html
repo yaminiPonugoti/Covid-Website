@@ -16,6 +16,9 @@
             </b></em>
         </p>
 		<script type="text/javascript" src="navFunctions.js"></script>
+		<!-- Chad has added the following two lines to hopefully access the database -->
+		<script type="text/javascript" src="database.js"></script>
+		<script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
 	</head>
 	<body id="body">
 		<div class="center" style="text-align: center;">
@@ -23,5 +26,20 @@
 				View visualizations
 			</button>
 		</div>
+		<!-- Added the following script to see if I can get the text to display when temp is over hospital level -->
+		<script type = "text/javascript">
+			   var temperature = localStorage.getItem("temp");
+			   var breathing = localStorage.getItem("breathing");
+			   var chestpain = localStorage.getItem("chestpain");
+			   var confusion = localStorage.getItem("confusion");
+			   var insomnia = localStorage.getItem("insomnia");
+			   var bluelips = localStorage.getItem("bluelips");
+			
+			// The following if statement only works if these variables are storing bool data, if not they will have to be rewritten
+			   if( temperature > 102 || breathing || chestpain || confusion || insomnia || bluelips) {
+				  document.write("<b>We recommend with a body temperature of " + toString(temperature) + "*F that you should seek medical attention.</b>");
+			   }
+			
+		 </script> 
 	</body>
 </html>
