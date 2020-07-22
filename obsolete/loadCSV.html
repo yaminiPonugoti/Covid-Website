@@ -1,0 +1,41 @@
+<html>
+<head>
+	<script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
+</head>
+<body>
+	<input type="file" onChange="upload(event)" id="upload">
+
+	<script>
+		var applicationID = "aj7gCIM8igszLJNZCv9M6cdDTM72hoNiQ6PM4hJN";
+		var javascriptKey = "FfINcaGnSpJXpmtGJtiLybn2xj93skaQ4M2Q62z5";
+		var serverID = "https://parseapi.back4app.com";
+		
+		function upload(event){
+			var file = event.target.files[0];
+			var reader = new FileReader();
+			var text = "";
+			reader.onload = function(){
+				var ct = reader.result;
+				text = ct.replace(/\n|\r\n|\r/g, "\t"); //Replace all newline characters
+				Parse.initialize(applicationID, javascriptKey);
+				Parse.serverURL = serverID;
+				var csv = text.split("\t");
+				for(p=1; p<csv.length; p++){
+					var body_array = csv[p].split(",");
+					var nimport = Parse.Object.extend("latlon");
+					var newimport = new nimport();
+					newimport.set("city", body_array[0]);
+					newimport.set("state", body_array[2]);
+					newimport.set("latitude", body_array[8]);
+					newimport.set("longitude", body_array[9]);
+					newimport.save(); //Save new entries into the table
+				}
+				alert("Import successful");
+			}
+			reader.readAsText(file);
+		}
+	
+	</script>
+
+</body>
+</html>

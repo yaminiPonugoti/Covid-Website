@@ -13,3 +13,8 @@
 			break;
 	}
 }*/
+
+/*
+Cities -> lat/lon translation aided by:
+https://simplemaps.com/data/us-cities
+*/

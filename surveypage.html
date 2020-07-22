@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<script type="text/javascript" src="database.js"></script>
+		<script type="text/javascript" src="usstates.js"></script>
 		<script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
 		<link rel="stylesheet" type="text/css" href="stylesheet.css">
 		<title class="covidjournal">
@@ -10,7 +11,7 @@
 			This is a journal log where you can record your COVID-19 symptoms and temperature and receive recommendations from us!
 		</p>
 	</head>
-	<body>
+	<body onload="setStatesRef();">
         <div style="text-align: center;">
 			<p class="QuestionsComments">
                 Please answer the following questions:
@@ -24,9 +25,9 @@
         </div>
         <div style="text-align: center;">
 			<p>
-                Please enter your location:
+                Please enter your state:
 			</p>
-			<input type="text" id="location" placeholder="city, state"><br>
+			<input type="text" id="location" placeholder="e.g., IN"><br>
         </div>
         <br/>
         <form name="symptomForm" id="symptomForm" action="" method="post" class="QuestionsComments">

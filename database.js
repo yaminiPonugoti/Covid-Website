@@ -4,11 +4,23 @@ var applicationID = "aj7gCIM8igszLJNZCv9M6cdDTM72hoNiQ6PM4hJN";
 var javascriptKey = "FfINcaGnSpJXpmtGJtiLybn2xj93skaQ4M2Q62z5";
 var serverID = "https://parseapi.back4app.com";
 
+var latlon = {};
+
+function setStatesRef(){
+	var value;
+	for(p=0; p<stateData.length; p++){
+		value = stateData[p].split(",");
+		latlon[value[0]] = [value[1], value[2]];
+	}
+}
+
+
 function checkValidity(){
 	if(!isNaN(document.getElementById("temp"))){
 		alert("Invalid temperature value");
 		return false;
 	}
+	
 	return true;
 }
 
@@ -55,8 +67,8 @@ function addSurveyEntry(){
 		
 		0,
 		"",
-		0,
-		0
+		Number(latlon[document.getElementById("location").value][0]),
+		Number(latlon[document.getElementById("location").value][1])
 	];
 	
 	var titles = [
@@ -99,9 +111,6 @@ function addSurveyEntry(){
 		}
 	}
 	entry[entry.length-3] = entry[entry.length-3].substring(0,entry[entry.length-3].length-1);
-	
-	alert(entry[entry.length-3]);
-	alert(entry[entry.length-4]);
 	
 	//Insert from data structures into database
 	Parse.initialize(applicationID, javascriptKey);
