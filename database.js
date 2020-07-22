@@ -174,6 +174,26 @@ function queryDatabase(first, last, birthday, field, extras = false){
 
 function adminLogin(name, password){
 	var locations = [];
+	var allSymptoms = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+	var allSymptomNames = [
+		"fever/chills",
+		"cough",
+		"breathing shortness",
+		"fatigue",
+		"body aches",
+		"headache",
+		"sense loss",
+		"sore throat",
+		"congestion/runny nose",
+		"nausea/vomiting",
+		"diarrhea",
+		
+		"trouble breathing",
+		"chest pain",
+		"confusion",
+		"insomnia",
+		"blue lips/face"
+	];
 	var needToAddLocation;
 	var incrementIndex = 0;
 	Parse.initialize(applicationID, javascriptKey);
@@ -185,6 +205,24 @@ function adminLogin(name, password){
 			var query2 = new Parse.Query(Parse.Object.extend("Survey"));
 			query2.find().then(results2 => {
 				for(i=0; i<results2.length; i++){
+				
+					if(results2[i].get("feverchills")){allSymptoms[0] += 1;}
+					if(results2[i].get("cough")){allSymptoms[1] += 1;}
+					if(results2[i].get("breathingshortness")){allSymptoms[2] += 1;}
+					if(results2[i].get("fatigue")){allSymptoms[3] += 1;}
+					if(results2[i].get("bodyaches")){allSymptoms[4] += 1;}
+					if(results2[i].get("headache")){allSymptoms[5] += 1;}
+					if(results2[i].get("senseloss")){allSymptoms[6] += 1;}
+					if(results2[i].get("sorethroat")){allSymptoms[7] += 1;}
+					if(results2[i].get("congestionrunnynose")){allSymptoms[8] += 1;}
+					if(results2[i].get("nauseavomiting")){allSymptoms[9] += 1;}
+					if(results2[i].get("diarrhea")){allSymptoms[10] += 1;}
+					if(results2[i].get("troublebreathing")){allSymptoms[11] += 1;}
+					if(results2[i].get("chestpain")){allSymptoms[12] += 1;}
+					if(results2[i].get("confusion")){allSymptoms[13] += 1;}
+					if(results2[i].get("insomnia")){allSymptoms[14] += 1;}
+					if(results2[i].get("bluelipsface")){allSymptoms[15] += 1;}
+				
 					needToAddLocation = true;
 					for(j=0; j<locations.length; j++){
 						if(locations[j][1] == results2[i].get("latitude")){
@@ -200,6 +238,8 @@ function adminLogin(name, password){
 						locations[incrementIndex][0] += 1;
 					}
 				}
+				localStorage.setItem("symptomNames", allSymptomNames);
+				localStorage.setItem("allSymptoms", allSymptoms);
 				localStorage.setItem("locations", locations);
 				window.open("adminDataViz.html", "_self");
 			});
