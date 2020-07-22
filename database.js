@@ -163,3 +163,15 @@ function queryDatabase(first, last, birthday, field, extras = false){
 		}
 	});
 }
+
+function adminLogin(name, password){
+	Parse.initialize(applicationID, javascriptKey);
+	Parse.serverURL = serverID;
+	var query = new Parse.Query(Parse.Object.extend("admin"));
+	query.equalTo("name", name);
+	query.find().then(results => {
+		if(results.length > 0){
+			window.open("adminDataViz.html", "_self");
+		}
+	});
+}
