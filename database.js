@@ -133,6 +133,7 @@ function addSurveyEntry(){
 }
 
 function queryDatabase(first, last, birthday, field, extras = false){
+	var severe = false;
 	var resultsArr = [];
 	Parse.initialize(applicationID, javascriptKey);
 	Parse.serverURL = serverID;
@@ -142,6 +143,12 @@ function queryDatabase(first, last, birthday, field, extras = false){
 	query.equalTo("birthdate", birthday);
 	query.find().then(results => {
 		for(i=0; i<results.length; i++){
+		
+			//check for severe symtpoms
+			if(results[i].get("troublebreathing") || results[i].get("chestpain") || results[i].get("confusion") || results[i].get("insomnia") || results[i].get("troublebreathing") || results[i].get("bluelips") || results[i].get("temperature") > 102){
+				severe = true;
+			}
+		
 			if(field == "createdAt"){
 				resultsArr[i] = String(results[i].get(field))//.split(" ").slice(1,4).join("-");
 			}
@@ -149,6 +156,7 @@ function queryDatabase(first, last, birthday, field, extras = false){
 				resultsArr.push(results[i].get(field));
 			}
 			if(i == results.length - 1){
+				localStorage.setItem("severe", severe);
 				localStorage.setItem(field, resultsArr);
 				if(extras){
 					var query2 = new Parse.Query(Parse.Object.extend("Survey"));
