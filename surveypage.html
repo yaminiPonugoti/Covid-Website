@@ -13,9 +13,11 @@
 	</head>
 	<body onload="setStatesRef();">
         <div style="text-align: center;">
-			<p class="QuestionsComments">
-                Please answer the following questions:
-			</p>
+            <b>
+                <p class="QuestionsComments">
+                    Please answer the following questions:
+                </p>
+            </b>
 			<label for="fName">First name: </label>
 			<input type="text" id="fName"><br>
 			<label for="lName">Last name:  </label>
@@ -30,12 +32,12 @@
 			<input type="text" id="location" placeholder="e.g., IN"><br>
         </div>
         <br/>
-        <form name="symptomForm" id="symptomForm" action="" method="post" >
-            <b>
-                <p style="font-size:20px">
-                    Do you have any of these symptoms? (Check all that apply).
-                </p>
-            </b>
+        <b>
+            <p style="font-size:20px">
+                Do you have any of these symptoms? (Check all that apply).
+            </p>
+        </b>
+        <form name="symptomForm" id="symptomForm" action="" method="post">
             <input type="checkbox" name="symptoms" value="fever/chills" id="fever/chills">
                 Fever or chills
             </input><br />
