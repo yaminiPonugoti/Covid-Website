@@ -29,17 +29,20 @@
 		</div>
 		<!-- Added the following script to see if I can get the text to display when temp is over hospital level -->
 		<script type = "text/javascript">
-			   var temperature = localStorage.getItem("temp");
-			   var breathing = localStorage.getItem("breathing");
-			   var chestpain = localStorage.getItem("chestpain");
-			   var confusion = localStorage.getItem("confusion");
-			   var insomnia = localStorage.getItem("insomnia");
-			   var bluelips = localStorage.getItem("bluelips");
-			
-			// The following if statement only works if these variables are storing bool data, if not they will have to be rewritten
-			   if( temperature > 102 || breathing || chestpain || confusion || insomnia || bluelips) {
-				  document.write("<b>We recommend with a body temperature of " + toString(temperature) + "*F that you should seek medical attention.</b>");
-			   }
+		   var temp = localStorage.getItem("temperature");
+		   var tempFlag = false;
+		   for(i=0; i<temp.length; i++){
+				if(temp[i] > 102){
+					tempFlag = true;
+					break;
+				}
+		   }
+		   if(tempFlag){
+				alert("We recommend with a body temperature of >102*F that you should seek medical attention.");
+		   }
+		   else if(localStorage.getItem("severe")){
+		   		alert("We recommend since you described severe symptoms that you should seek medical attention.");
+		   }
 			
 		 </script> 
 	</body>
