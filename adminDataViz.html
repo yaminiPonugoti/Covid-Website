@@ -16,6 +16,9 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
 		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
 		crossorigin=""/>
+		<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+		integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+		crossorigin=""></script>
 	</head>
 	<body style="background-color: Linen";>
 		<div id="mapid" style="height:500px; width:800px;"></div>
@@ -33,23 +36,32 @@
 			const tiles = L.tileLayer(tileUrl, {attribution});
 			tiles.addTo(mymap);
 			
-			dlist = localStorage.getItem("locations");
-			
+			dList = localStorage.getItem("locations");
+			dList = dList.replace(/-/g, "");
+			dList = dList.split(",");
+			alert(dList[2]);
+			alert(typeof(dList[2]));
+			dlist = [];
+			for(c=0; c<dList.length; c+=3){
+				dlist.push([Number(dList[c]), Number(dList[c+1]), -Number(dList[c+2])]);
+			}
+			alert(dlist[0]);
+			var circle
 			for (var i = 0; i < dlist.length; i++) {
-			circle = new L.circle([dlist[i][1], dlist[i][2]], 500, {
-				fillOpacity: .8,
-				color: '#ffa500',
-				fillColor: '#ffa500',
-				weight: 3,
-				radius: 40,
-				stroke: true
-			})
-				.bindPopup(dlist[i][0])
-				.addTo(mymap);
+				circle = L.circle([dlist[i][1], dlist[i][2]], {
+					fillOpacity: .8,
+					color: '#ffa500',
+					fillColor: '#ffa500',
+					weight: 3,
+					radius: 40,
+					stroke: true
+				})
+					.bindPopup("Reports: " + String(dlist[i][0]))
+					.addTo(mymap);
 		}
-		</script>-
+		</script>
 		
-<script>
+<!--<script>
 
     var svg = d3.select("svg"),
         margin = 200,
@@ -125,6 +137,6 @@
 	.style("font-size", "12px")
 	.style("z-index", "10")
 	.style("visibility", "hidden");
-</script>
+</script>-->
 	</body>
 </html>

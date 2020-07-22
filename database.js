@@ -173,13 +173,36 @@ function queryDatabase(first, last, birthday, field, extras = false){
 }
 
 function adminLogin(name, password){
+	var locations = [];
+	var needToAddLocation;
+	var incrementIndex = 0;
 	Parse.initialize(applicationID, javascriptKey);
 	Parse.serverURL = serverID;
 	var query = new Parse.Query(Parse.Object.extend("admin"));
 	query.equalTo("name", name);
 	query.find().then(results => {
 		if(results.length > 0){
-			window.open("adminDataViz.html", "_self");
+			var query2 = new Parse.Query(Parse.Object.extend("Survey"));
+			query2.find().then(results2 => {
+				for(i=0; i<results2.length; i++){
+					needToAddLocation = true;
+					for(j=0; j<locations.length; j++){
+						if(locations[j][1] == results2[i].get("latitude")){
+							needToAddLocation = false;
+							incrementIndex = j;
+							break;
+						}
+					}
+					if(needToAddLocation){
+						locations.push([1, results2[i].get("latitude"), results2[i].get("longitude")]);
+					}
+					else{
+						locations[incrementIndex][0] += 1;
+					}
+				}
+				localStorage.setItem("locations", locations);
+				window.open("adminDataViz.html", "_self");
+			});
 		}
 	});
 }
