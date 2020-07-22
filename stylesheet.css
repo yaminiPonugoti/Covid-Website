@@ -51,6 +51,13 @@
 	font-style: bold;
 	text-align: center;
 }
+/* Submit Button */
+.submitbutton {
+font-size: 16px;
+color: white;
+background-color: green;
+text-align: center;
+padding: 10px 20px;
 /* Labeling The Symptoms Use This Class */
 .symptoms {
 	font-size: 10px;
