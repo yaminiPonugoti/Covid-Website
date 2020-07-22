@@ -16,15 +16,12 @@
 		crossorigin=""></script>
 		<script type="text/javascript" src="database.js"></script>
 		<script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
-			 <!-->#mapid { height: 500px;
-			 		  width: 800px; }-->
-		</style>
 		<script type="text/javascript" src="navFunctions.js"></script>
 	</head>
 	<body style="background-color: Linen;" id="body" onload="createSymptomGraph(); createTempGraph();">
 		<!--<div id="mapid" ></div>-->
-		<div id="container" class="svg-container"></div>
-		<div id="container2" class="svg-container"></div>
+		<div id="container" class="svg-container" style="height:300px; width:400px;"></div>
+		<div id="container2" class="svg-container" style="height:300px; width:400px;"></div>
 		<!--<script>
 			var mymap = L.map('mapid').setView([39.8097343, -98.5556199], 4);
 			const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';

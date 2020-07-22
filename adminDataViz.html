@@ -21,8 +21,8 @@
 		crossorigin=""></script>
 	</head>
 	<body style="background-color: Linen" onload="createGraph()">
-		<div id="mapid" style="height:300px; width:500px;"></div>
-		<div id="container" class="svg-container"></div>
+		<div id="mapid" style="height:300px; width:400px;"></div>
+		<div id="container" class="svg-container" style="height:300px; width:400px;"></div>
 		<div class="center" style="text-align: center;">
 			<button type = "button" class="logoutbutton" onclick="window.open('index.html', '_self')">
 				Log Out
@@ -164,10 +164,6 @@
 		for(i=0; i<names.length; i++){
 			data.push({name:names[i], number:Number(allSymptoms[i])});
 		}
-		alert(data[0].name);
-		alert(data[0].number);
-		alert(data[15].name);
-		alert(data[15].number);
 		
 		
 		// X axis
