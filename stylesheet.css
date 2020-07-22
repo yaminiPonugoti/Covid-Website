@@ -102,13 +102,15 @@ font-size: 16px;
 border-radius: 30px;
 border: none;
 }
-/* Home Page */
-.homebutton { /*change not reflecting */
-background-color: lightblue;
+/* Home Page * Change Not Reflecting */
+.homebutton {
+background-color: blue;
 color: white;
 padding: 10px 20px;
 text-align: center;
 font-size: 16px;
+border-radius 30px:
+border: none;	
 }
 /* Post Survey Page */
 .LogRecorded {
