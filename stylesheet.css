@@ -58,6 +58,7 @@ color: white;
 background-color: green;
 text-align: center;
 padding: 10px 20px;
+border-radius: 30px;
 /* Labeling The Symptoms Use This Class */
 .symptoms {
 	font-size: 10px;
