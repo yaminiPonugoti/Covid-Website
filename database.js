@@ -150,7 +150,7 @@ function queryDatabase(first, last, birthday, field, extras = false){
 			}
 		
 			if(field == "createdAt"){
-				resultsArr[i] = String(results[i].get(field))//.split(" ").slice(1,4).join("-");
+				resultsArr[i] = String(results[i].get(field)).split(" ").slice(1,3).join("-") + " " + String(results[i].get(field)).split(" ").slice(4,5);
 			}
 			else if(field != "objectId"){
 				resultsArr.push(results[i].get(field));
