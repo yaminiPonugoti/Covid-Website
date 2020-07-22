@@ -239,48 +239,46 @@
 			.classed("svg-content", true);
 	
 		//-----------------------------DATA-----------------------------//
-		const timeConv = d3.timeParse("%d-%b-%Y");
-		const dataset = d3.csv("data.csv");
+		//const timeConv = d3.timeParse("%d-%b-%Y");
+		//const dataset = d3.csv("data.csv");
 		
-		dataset.then(function(data) {
-			var slices = data.columns.slice(1).map(function(id) {
-				return {
-					id: id,
-					values: data.map(function(d){
-						return {
-							date: timeConv(d.date),
-							measurement: +d[id]
-						};
-					})
-				};
-			});
+		//dataset.then(function(data) {
+		//	var slices = data.columns.slice(1).map(function(id) {
+		//		return {
+		//			id: id,
+		//			values: data.map(function(d){
+		//				return {
+		//					date: timeConv(d.date),
+		//					measurement: +d[id]
+		//				};
+		//			})
+		//		};
+		//	});
 	
 		//----------------------------SCALES----------------------------//
 		const xScale = d3.scaleTime().range([0,width]);
 		const yScale = d3.scaleLinear().rangeRound([height, 0]);
 		xScale.domain(d3.extent(data, function(d){
-			return timeConv(d.date)}));
+			return d.date}));
 	
-		yScale.domain([(0), d3.max(slices, function(c) {
-			return d3.max(c.values, function(d) {
-				return d.measurement + 4; });
+		yScale.domain([(0), d3.max(function(d) {
+				return d.value + 4; 
 				})
 			]);
 	
 		//-----------------------------AXES-----------------------------//
 		const yaxis = d3.axisLeft()
-			.ticks((slices[0].values).length)
+			.ticks((data).length)
 			.scale(yScale);
 	
 		const xaxis = d3.axisBottom()
 			.ticks(d3.timeDay.every(1))
-			.tickFormat(d3.timeFormat('%b %d'))
 			.scale(xScale);
 	
 		//----------------------------LINES-----------------------------//
 		const line = d3.line()
 			.x(function(d) { return xScale(d.date); })
-			.y(function(d) { return yScale(d.measurement); });
+			.y(function(d) { return yScale(d.value); });
 	
 		let id = 0;
 		const ids = function () {
@@ -308,48 +306,48 @@
 			.attr("dy", ".75em")
 			.attr("y", 6)
 			.style("text-anchor", "end")
-			.text("Frequency");
+			.text("Temperature");
 	
 		//----------------------------LINES-----------------------------//
 		const lines = svg.selectAll("lines")
-			.data(slices)
+			.data(data)
 			.enter()
 			.append("g");
 	
 		lines.append("path")
 			.attr("class", ids)
-			.attr("d", function(d) { return line(d.values); });
+			.attr("d", function(d) { return line(d.data); });
 	
 		lines.append("text")
 			.attr("class","serie_label")
 			.datum(function(d) {
 				return {
 					id: d.id,
-					value: d.values[d.values.length - 1]}; })
+					value: d.data[d.data.length - 1]}; })
 			.attr("transform", function(d) {
 					return "translate(" + (xScale(d.value.date) + 10)  
-					+ "," + (yScale(d.value.measurement) + 5 )+ ")"; })
+					+ "," + (yScale(d.value.value) + 5 )+ ")"; })
 			.attr("x", 5)
 			.text(function(d) { return ("Serie ") + d.id; });
 	
 		//---------------------------POINTS-----------------------------// 
 		lines.selectAll("points")
-			.data(function(d) {return d.values})
+			.data(function(d) {return d.data})
 			.enter()
 			.append("circle")
 			.attr("cx", function(d) { return xScale(d.date); })      
-			.attr("cy", function(d) { return yScale(d.measurement); })    
+			.attr("cy", function(d) { return yScale(d.value); })    
 			.attr("r", 1)
 			.attr("class","point")
 			.style("opacity", 1);
 	
 		//---------------------------EVENTS-----------------------------//    
 		lines.selectAll("circles")
-			.data(function(d) { return(d.values); } )
+			.data(function(d) { return(d.data); } )
 			.enter()
 			.append("circle")
 			.attr("cx", function(d) { return xScale(d.date); })      
-			.attr("cy", function(d) { return yScale(d.measurement); })    
+			.attr("cy", function(d) { return yScale(d.value); })    
 			.attr('r', 10)
 			.style("opacity", 0)
 			.on('mouseover', function(d) {
@@ -358,7 +356,7 @@
 					.duration(200)
 					.style("opacity", 1);
 	
-				tooltip.html(d.measurement)
+				tooltip.html(d.value)
 					.style("left", (d3.event.pageX + 25) + "px")
 					.style("top", (d3.event.pageY) + "px");
 	
