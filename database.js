@@ -246,3 +246,15 @@ function adminLogin(name, password){
 		}
 	});
 }
+
+function directViz(){
+	var text = prompt("Please enter your personal information: ", "first,last,birthday");
+	values = text.split(",");
+	setDefaults(values[0], values[1], values[2]);
+	function setDefaults(fName, lName, bDay){
+		queryDatabase(fName, lName, bDay, "temperature");
+		queryDatabase(fName, lName, bDay, "createdAt");
+		queryDatabase(fName, lName, bDay, "symptomcount");
+		queryDatabase(fName, lName, bDay, "symptomslist", true);
+	}
+}
