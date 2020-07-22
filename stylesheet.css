@@ -132,13 +132,6 @@ font-size: 16px;
 }
 /* Admin Data Visualization Page */
 /* Admin Below our Patients Results */
-.BelowIsPatientData{
-	font-size: 20px;
-	color: black;
-	font-style: bold;
-	text-align: center;
-	text-decoration: underline;
-}
 .body {
 background-color: FFFAFA;
 }
@@ -147,7 +140,7 @@ background-color: FFFAFA;
 background-color: blue;
 color: white;
 padding: 10px 20px;
-text-allign: center;
+text-align: center;
 font-size: 16px;
 }
 /* Personal Data Visualization Page */

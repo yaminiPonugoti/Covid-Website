@@ -12,6 +12,13 @@
 	font-style: bold;
 	text-align: center;
 }
+.logoutbutton {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+}
 .axis line{
     stroke: #706f6f;
     stroke-width: 0.5;
