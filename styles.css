@@ -21,6 +21,15 @@
 border-radius: 30px;
 border: none;
 }
+.homebutton {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 30px;
+    border: none;	
+}
 .axis line{
     stroke: #706f6f;
     stroke-width: 0.5;
